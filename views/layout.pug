@@ -14,3 +14,9 @@ html
       .row
         != messages()
       block body
+      block footer
+        if user
+          .row
+            .col-md-12
+              .pull-right
+                small Hello #{user.username}!
