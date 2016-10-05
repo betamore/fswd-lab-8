@@ -1,0 +1,20 @@
+extends ./layout.pug
+block header
+  h1 Hello world!
+  p.lead
+    | This is coming from the
+    code views/index.pug
+    | file
+
+block body
+  if !true
+    p It's true!
+  else
+    p It's false.
+
+  ul
+
+  form.form-inline(method="POST" action="/tasks")
+    div.form-group
+      input.form-control(type="text" name="todo")
+    button#add.btn.btn-default Add Todo

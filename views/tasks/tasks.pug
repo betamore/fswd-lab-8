@@ -1,0 +1,8 @@
+extends ../layout.pug
+block body
+  h1 Tasks!
+
+  ul
+    each task in tasks
+      li
+        a(href="/tasks/" + task.id)= task.name

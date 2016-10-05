@@ -1,0 +1,16 @@
+extends ../layout.pug
+block header
+  h1 Angular Playground
+block body
+  div(ng-controller="TodoListController as vm")
+    input(type="text" ng-model="toFilter")
+    ul
+      li(ng-repeat="todo in vm.todoList | filter: { name: toFilter } track by $index")
+        input(type="checkbox" ng-click="vm.removeTodo(todo)")
+        |  {{ todo.name }} ({{ todo.createdAt | date:'shortDate'}})
+
+    input(ng-model="toAdd" type="text")
+    button(ng-click="vm.addTodo(toAdd); toAdd = ''") Add it!
+  hr
+  div(ng-controller="TodoListController as otherVm")
+    p There are {{ otherVm.todoList.length }} items.

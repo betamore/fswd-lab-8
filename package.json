@@ -1,0 +1,57 @@
+{
+  "name": "fswd-lab-7",
+  "version": "1.0.0",
+  "description": "Full Stack Web Development - Lab 7: Angular: Right or Obtuse?",
+  "repository": "github:betamore/fswd-lab-6",
+  "main": "lib/index.js",
+  "scripts": {
+    "start": "node ./lib/index.js",
+    "dev": "NODE_ENV=development nodemon ./lib/index.js",
+    "lint": "eslint --ignore-path .gitignore . || exit 0",
+    "test": "npm run mocha",
+    "postinstall": "jspm install",
+    "jspm": "jspm",
+    "sequelize": "sequelize",
+    "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "chai": "^3.5.0",
+    "istanbul": "^0.4.5",
+    "mocha": "^2.4.5",
+    "nodemon": "^1.10.2",
+    "supertest": "^2.0.0",
+    "supertest-as-promised": "^3.2.0"
+  },
+  "dependencies": {
+    "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "connect-redis": "^3.1.0",
+    "cookie-parser": "^1.4.3",
+    "express": "^4.13.4",
+    "express-messages": "^1.0.1",
+    "express-session": "^1.14.1",
+    "jspm": "^0.16.45",
+    "pg": "^6.1.0",
+    "pug": "^2.0.0-beta6",
+    "sequelize": "^3.24.3",
+    "sequelize-cli": "^2.4.0"
+  },
+  "jspm": {
+    "directories": {
+      "baseURL": "public"
+    },
+    "dependencies": {
+      "angular": "github:angular/bower-angular@^1.5.8",
+      "bootstrap": "github:twbs/bootstrap@^3.3.7",
+      "css": "github:systemjs/plugin-css@^0.1.27",
+      "jquery": "npm:jquery@^3.1.0",
+      "lodash": "npm:lodash@^4.16.3"
+    },
+    "devDependencies": {
+      "typescript": "npm:typescript@^1.6.2"
+    }
+  }
+}
