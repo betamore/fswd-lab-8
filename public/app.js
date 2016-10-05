@@ -16,7 +16,7 @@ angular.element(document).ready(function() {
   angular.bootstrap(angular.element(document), ['fswd']);
   // this must be a bug of some kind
   // TODO: Dig into this
-  angular.resumeBootstrap([]);
+  //angular.resumeBootstrap([]);
 });
 
 // $(function() {

@@ -3,20 +3,20 @@ extends ../layout.pug
 block body
   .row
     .col-md-12
-      form(method="POST" action="/users/register")
-        .form-group
+      form(method="POST" action="/users/register" name="registration")
+        .form-group(ng-class="{ 'has-error': registration.username.$invalid && registration.username.$dirty }")
           label(for="username") Username
-          input.form-control(type="text" name="username" required)
+          input.form-control(type="text" name="username" required ng-model="user.username" unique-username)
         .form-group
           label(for="email") Email Address
-          input.form-control(type="email" name="email" required)
+          input.form-control(type="email" name="email" required ng-model="user.email")
         .form-group
           label(for="password") Password
-          input.form-control(type="password" name="password" required)
+          input.form-control(type="password" name="password" required ng-model="user.password")
         .form-group
           label(for="password_confirm") Confirm password
-          input.form-control(type="password" name="password_confirm" required)
-        button.btn.btn-default(type="submit") Register
+          input.form-control(type="password" name="password_confirm" required ng-model="user.password_confirm")
+        button.btn.btn-default(type="submit" ng-disabled="registration.$invalid || user.password !== user.password_confirm") Register
   .row.well
       .col-md-6
         h4 User
