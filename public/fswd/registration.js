@@ -1,14 +1,21 @@
 import angular from 'angular';
 
 angular.module('fswd.registration', [])
-  .directive('uniqueUsername', function() {
+  .directive('uniqueUsername', function($http, $q) {
     return {
       restrict: 'A',
       require: '^ngModel',
       link: function(scope, element, attrs, ctrl) {
-        ctrl.$validators.unique = function(modelValue) {
+        ctrl.$asyncValidators.unique = function(modelValue) {
           console.log('Validating username: ' + modelValue);
-          return modelValue !== 'rayners';
+          return $http.post('/users/available', { username: modelValue })
+            .then(function(response) {
+              if (response.data.isAvailable) {
+                return true;
+              } else {
+                return $q.reject("Not unique");
+              }
+            });
         };
       }
     };

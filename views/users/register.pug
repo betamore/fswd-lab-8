@@ -6,7 +6,10 @@ block body
       form(method="POST" action="/users/register" name="registration")
         .form-group(ng-class="{ 'has-error': registration.username.$invalid && registration.username.$dirty }")
           label(for="username") Username
-          input.form-control(type="text" name="username" required ng-model="user.username" unique-username)
+          input.form-control(type="text" name="username" required ng-model="user.username" ng-model-options="{ updateOn: 'default blur', debounce: { default: 2000, blur: 0 } }" unique-username)
+          div(ng-show="registration.username.$invalid && registration.username.$dirty")
+            p(ng-show="registration.username.$error.required") Username is required.
+            p(ng-show="registration.username.$error.unique") Username must be unique.
         .form-group
           label(for="email") Email Address
           input.form-control(type="email" name="email" required ng-model="user.email")

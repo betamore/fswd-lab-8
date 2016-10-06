@@ -79,7 +79,7 @@ describe('users', function() {
           .expect(200, /User already exists/);
       });
 
-      xit('should tell us the username is not avaialble', function() {
+      it('should tell us the username is not avaialble', function() {
         return agent
           .post('/users/available')
           .type('form')
@@ -87,7 +87,7 @@ describe('users', function() {
           .expect(200, { isAvailable: false });
       });
 
-      xit('should tell us that another username is available', function() {
+      it('should tell us that another username is available', function() {
         return agent
           .post('/users/available')
           .type('form')
