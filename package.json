@@ -1,8 +1,8 @@
 {
-  "name": "fswd-lab-7",
+  "name": "fswd-lab-8",
   "version": "1.0.0",
-  "description": "Full Stack Web Development - Lab 7: Angular: Right or Obtuse?",
-  "repository": "github:betamore/fswd-lab-6",
+  "description": "Full Stack Web Development -  Lab 8: Angular: Who watches the watchers?",
+  "repository": "github:betamore/fswd-lab-8",
   "main": "lib/index.js",
   "scripts": {
     "start": "node ./lib/index.js",
