@@ -5,54 +5,56 @@
   "repository": "github:betamore/fswd-lab-8",
   "main": "lib/index.js",
   "scripts": {
-    "start": "node ./lib/index.js",
-    "dev": "NODE_ENV=development nodemon ./lib/index.js",
     "lint": "eslint --ignore-path .gitignore . || exit 0",
-    "test": "npm run mocha",
-    "postinstall": "jspm install",
-    "jspm": "jspm",
+    "test": "npm run nyc",
+    "start": "node ./lib/index.js",
     "sequelize": "sequelize",
-    "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js"
+    "nyc": "NODE_ENV=test nyc mocha",
+    "coverage": "opn coverage/lcov-report/index.html",
+    "mocha": "istanbul cover -x '**/models/index.js' _mocha -- -R spec test/server/*-test.js",
+    "dev": "NODE_ENV=development nodemon ./lib/index.js"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "devDependencies": {
-    "chai": "^3.5.0",
-    "istanbul": "^0.4.5",
+    "bootstrap": "^3.3.7",
+    "bootstrap-webpack": "0.0.6",
+    "chai": "^4.0.2",
+    "connect-session-sequelize": "^4.1.0",
+    "css-loader": "^0.28.4",
+    "eslint": "^3.15.0",
+    "exports-loader": "^0.6.4",
+    "extract-text-webpack-plugin": "^2.1.0",
+    "file-loader": "^0.11.2",
+    "imports-loader": "^0.7.1",
+    "jquery": "^3.2.1",
+    "less": "^2.7.2",
+    "less-loader": "^4.0.4",
     "mocha": "^3.1.2",
-    "nodemon": "^1.10.2",
-    "supertest": "^2.0.0",
-    "supertest-as-promised": "^4.0.2"
+    "nodemon": "^1.11.0",
+    "nyc": "^11.0.2",
+    "opn-cli": "^3.1.0",
+    "style-loader": "^0.18.2",
+    "supertest": "^3.0.0",
+    "url-loader": "^0.5.8",
+    "webpack": "^2.6.1",
+    "webpack-dev-middleware": "^1.10.2"
   },
   "dependencies": {
-    "bcrypt": "^0.8.7",
-    "body-parser": "^1.15.2",
+    "angular": "^1.6.4",
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
-    "connect-redis": "^3.1.0",
+    "connect-redis": "^3.3.0",
     "cookie-parser": "^1.4.3",
     "express": "^4.13.4",
     "express-messages": "^1.0.1",
-    "express-session": "^1.14.1",
-    "jspm": "^0.16.45",
-    "pg": "^6.1.0",
-    "pug": "^2.0.0-beta6",
-    "sequelize": "^3.24.3",
-    "sequelize-cli": "^2.4.0"
-  },
-  "jspm": {
-    "directories": {
-      "baseURL": "public"
-    },
-    "dependencies": {
-      "angular": "github:angular/bower-angular@^1.5.8",
-      "bootstrap": "github:twbs/bootstrap@^3.3.7",
-      "css": "github:systemjs/plugin-css@^0.1.27",
-      "jquery": "npm:jquery@^3.1.0",
-      "lodash": "npm:lodash@^4.16.3"
-    },
-    "devDependencies": {
-      "typescript": "npm:typescript@^1.6.2"
-    }
+    "express-session": "^1.15.3",
+    "morgan": "^1.8.0",
+    "pug": "^2.0.0-rc.2",
+    "sequelize": "^4.1.0",
+    "sequelize-cli": "^2.7.0",
+    "sqlite3": "^3.1.8"
   }
 }

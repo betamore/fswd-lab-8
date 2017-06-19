@@ -7,7 +7,7 @@ require('../setup');
 var app = require('../../lib/server');
 
 // libraries
-var request = require('supertest-as-promised').agent,
+var request = require('supertest').agent,
   agent;
 
 var User = require('../../models').User;

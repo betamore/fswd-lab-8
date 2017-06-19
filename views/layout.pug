@@ -1,12 +1,9 @@
 doctype html
 html
   head
-    script(src="/jspm_packages/system.js")
-    script(src="/config.js")
-    script
-      | System.import('app').catch(console.error.bind(console));
+    script(src="/bundle.js")
     title Hello world!
-  body(style="display: none")
+  body
     div.container
       .page-header
         block header

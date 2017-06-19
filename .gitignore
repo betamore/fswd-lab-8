@@ -1,4 +1,6 @@
 node_modules
 public/jspm_packages
 coverage
-npm-debug.log
+.nyc_output
+development.db
+test.db
