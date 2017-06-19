@@ -1,4 +1,5 @@
-var path = require('path');
+var path = require('path'),
+    webpack = require('webpack');
 
 module.exports = {
   entry: './app/index.js',
@@ -6,6 +7,9 @@ module.exports = {
       path: path.join(__dirname, 'public'),
       publicPath: '/',
       filename: 'bundle.js'
+  },
+  resolve: {
+      modules: [path.resolve(__dirname, "app"), "node_modules"]
   },
   module: {
     loaders: [
@@ -15,6 +19,14 @@ module.exports = {
       {test: /\.ttf(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=application/octet-stream'},
       {test: /\.eot(\?v=\d+\.\d+\.\d+)?$/, loader: 'file-loader'},
       {test: /\.svg(\?v=\d+\.\d+\.\d+)?$/, loader: 'url-loader?limit=10000&mimetype=image/svg+xml'}
-    ]
-  }
+    ],
+  },
+
+  plugins: [
+      new webpack.ProvidePlugin({
+          'window.jQuery': 'jquery'
+      })
+  ],
+
+  devtool: 'inline-source-map'
 };

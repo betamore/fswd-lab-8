@@ -1,9 +1,12 @@
+block variables
+  - var angularApplication = 'fswd';
+
 doctype html
 html
   head
     script(src="/bundle.js")
     title Hello world!
-  body
+  body(ng-app=angularApplication)
     div.container
       .page-header
         block header

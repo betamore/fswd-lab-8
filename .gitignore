@@ -4,3 +4,8 @@ coverage
 .nyc_output
 development.db
 test.db
+public/bundle.js
+public/*.ttf
+public/*.woff*
+public/*.svg
+public/*.eot
