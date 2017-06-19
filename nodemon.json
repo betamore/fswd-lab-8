@@ -1,3 +1,3 @@
 {
-  "ignore": ["public/*", "views/*", "migrations/*", "test/*"]
+  "ignore": ["app/*", "public/*", "views/*", "migrations/*", "test/*"]
 }
