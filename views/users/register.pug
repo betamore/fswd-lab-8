@@ -4,34 +4,37 @@ block append variables
   - angularApplication = 'fswd.registration'
 
 block body
-  .row
-    .col-md-12
-      form(method="POST" action="/users/register" name="registration")
-        .form-group
-          label(for="username") Username
-          input.form-control(type="text" name="username" required ng-model="user.username" unique-username ng-model-options="{ updateOn: 'blur default', debounce: { default: 1000, blur: 0 } }")
-          div(ng-show="registration.username.$invalid && registration.username.$dirty")
-            p(ng-show="registration.username.$error.required") Username is required!
-            p(ng-show="registration.username.$error.uniqueUsername") Username is not unique!
-        .form-group
-          label(for="email") Email Address
-          input.form-control(type="email" name="email" required ng-model="user.email")
-          div(ng-show="registration.email.$invalid && registration.email.$dirty")
-            p(ng-show="registration.email.$error.required") Email is required!
-            p(ng-show="registration.email.$error.email") Email is not an email address.
-        .form-group
-          label(for="password") Password
-          input.form-control(type="password" name="password" required ng-model="user.password")
-        .form-group
-          label(for="password_confirm") Confirm password
-          input.form-control(type="password" name="password_confirm" required ng-model="user.password_confirm")
-        button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register
-  .row.well(ng-if="user || registration")
-      .col-md-6
-        h4 User
-        pre
-          code {{ user | json }}
-      .col-md-6
-        h4 Registration
-        pre
-          code {{ registration | json }}
+  div(ng-controller="RegistrationController as $reg")
+    .row
+      .col-md-12
+        form(method="POST" action="/users/register" name="registration")
+          .form-group
+            label(for="username") Username
+            input.form-control(type="text" name="username" required ng-model="$reg.username" unique-username ng-model-options="{ updateOn: 'blur default', debounce: { default: 1000, blur: 0 } }")
+            div(ng-show="registration.username.$invalid && registration.username.$dirty")
+              p(ng-show="registration.username.$error.required") Username is required!
+              p(ng-show="registration.username.$error.uniqueUsername") Username is not unique!
+          .form-group
+            label(for="email") Email Address
+            input.form-control(type="email" name="email" required ng-model="$reg.email")
+            div(ng-show="registration.email.$invalid && registration.email.$dirty")
+              p(ng-show="registration.email.$error.required") Email is required!
+              p(ng-show="registration.email.$error.email") Email is not an email address.
+          .form-group
+            label(for="password") Password
+            input.form-control(type="password" name="password" required ng-model="$reg.password")
+            p(ng-show="registration.password.$error.passwordMatch") No matchy
+          .form-group
+            label(for="password_confirm") Confirm password
+            input.form-control(type="password" name="password_confirm" required ng-model="$reg.password_confirm")
+            p(ng-show="registration.password_confirm.$error.passwordMatch") No matchy
+          button.btn.btn-default(type="submit" ng-disabled="registration.$invalid") Register
+    .row.well(ng-if="$reg || registration")
+        .col-md-6
+          h4 User
+          pre
+            code {{ $reg | json }}
+        .col-md-6
+          h4 Registration
+          pre
+            code {{ registration | json }}

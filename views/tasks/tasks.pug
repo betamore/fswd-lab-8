@@ -2,7 +2,12 @@ extends ../layout.pug
 block body
   h1 Tasks!
 
-  ul
-    each task in tasks
-      li
-        a(href="/tasks/" + task.id)= task.name
+  h3 Angular Stuff
+  div(ng-controller="TasksController as $tasks")
+    ul
+      li(ng-repeat="task in $tasks.tasks track by task.id") {{ task.name }}
+
+  .well(ng-controller="TasksController as $taskCounter")
+    p There are {{ $taskCounter.tasks.length }} tasks.
+
+  add-task-component

@@ -22,12 +22,36 @@ module.exports = angular.module('fswd.registration', [])
                 }
         };
     })
-    .controller('RegistrationController', function() {
+    .controller('RegistrationController', function($scope) {
         // this is the sample registration controller
+        var $reg = this;
         // eslint-disable-next-line
         this.testingCoverage = function() {
             console.log('this will never run');
         };
 
-        this.value = 15;
+        $scope.$watch(function() {
+            return $reg.password;
+        }, function(newVal, oldVal) {
+            $scope.registration.password_confirm.$setValidity('passwordMatch', newVal === $reg.password_confirm);
+            $scope.registration.password.$setValidity('passwordMatch', newVal === $reg.password_confirm);
+            if (newVal === $reg.password_confirm) {
+                console.log('They match!');
+            } else {
+                console.log('No matchy');
+            }
+        });
+
+        $scope.$watch(function() {
+            return $reg.password_confirm;
+        }, function(newVal, oldVal) {
+            $scope.registration.password_confirm.$setValidity('passwordMatch', newVal === $reg.password);
+            $scope.registration.password.$setValidity('passwordMatch', newVal === $reg.password);
+            if (newVal === $reg.password) {
+                console.log('They match!');
+            } else {
+                console.log('No matchy');
+            }
+
+        });
     });
