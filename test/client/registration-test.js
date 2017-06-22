@@ -18,9 +18,5 @@ describe('fswd.registration', function() {
         it('should exist', function() {
             controller.should.be.ok;
         });
-
-        it('should have value', function() {
-            controller.value.should.equal(15);
-        });
     });
 });

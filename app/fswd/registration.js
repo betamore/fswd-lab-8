@@ -10,7 +10,6 @@ module.exports = angular.module('fswd.registration', [])
                         return $q(function(resolve, reject) {
                             $http.get('/users/available?username=' + value)
                                 .then(function(response) {
-                                    console.log(response.data);
                                     if (response.data.isAvailable) {
                                         resolve();
                                     } else {
@@ -32,7 +31,7 @@ module.exports = angular.module('fswd.registration', [])
 
         $scope.$watch(function() {
             return $reg.password;
-        }, function(newVal, oldVal) {
+        }, function(newVal) {
             $scope.registration.password_confirm.$setValidity('passwordMatch', newVal === $reg.password_confirm);
             $scope.registration.password.$setValidity('passwordMatch', newVal === $reg.password_confirm);
             if (newVal === $reg.password_confirm) {
@@ -44,7 +43,7 @@ module.exports = angular.module('fswd.registration', [])
 
         $scope.$watch(function() {
             return $reg.password_confirm;
-        }, function(newVal, oldVal) {
+        }, function(newVal) {
             $scope.registration.password_confirm.$setValidity('passwordMatch', newVal === $reg.password);
             $scope.registration.password.$setValidity('passwordMatch', newVal === $reg.password);
             if (newVal === $reg.password) {
