@@ -15,6 +15,13 @@ module.exports = function(sequelize, DataTypes) {
                 completedAt: null
             }
         },
+        completed: {
+            where: {
+                completedAt: {
+                    $ne: null
+                }
+            }
+        },
         completedToday: function() {
             return {
                 where: {
@@ -42,7 +49,7 @@ module.exports = function(sequelize, DataTypes) {
   };
 
   Task.prototype.markCompleted = function() {
-    return this.updateAttributes({completedAt: sequelize.fn('NOW')});
+    return this.updateAttributes({completedAt: new Date()});
   };
 
   Task.associate = function(models) {
