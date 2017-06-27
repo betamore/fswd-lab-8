@@ -41,12 +41,16 @@ module.exports = angular.module('fswd.task', [])
         this.addTask = function(newTask) {
             return $http.post('/tasks', { todo: newTask })
                 .then(function(response) {
-                    tasks = tasks.concat([response.data]);                    
+                    tasks = tasks.concat([response.data]);
                 });
         };
     })
     .controller('TasksController', function(TaskListService, $scope) {
         var self = this;
+
+        self.completeTask = function(taskId) {
+            console.log("COMPLETING", taskId);
+        };
 
         TaskListService.startTaskPoller();
         $scope.$watch(function() {

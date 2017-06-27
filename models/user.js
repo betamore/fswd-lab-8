@@ -23,5 +23,10 @@ module.exports = function(sequelize, DataTypes) {
   User.prototype.isValidPassword = function(password) {
         return bcrypt.compareSync(password, this.password);
   };
+
+  User.associate = function(models) {
+    User.hasMany(models.Task);
+  };
+
   return User;
 };
