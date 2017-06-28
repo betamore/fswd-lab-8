@@ -12,7 +12,9 @@
     "nyc": "NODE_ENV=test nyc mocha test/server/*-test.js",
     "karma": "karma start --single-run",
     "coverage": "opn coverage/lcov-report/index.html",
-    "dev": "NODE_ENV=development nodemon ./lib/index.js"
+    "dev": "NODE_ENV=development nodemon ./lib/index.js",
+    "webpack": "webpack",
+    "heroku-postbuild": "npm run webpack"
   },
   "keywords": [],
   "author": "",
