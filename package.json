@@ -14,7 +14,7 @@
     "coverage": "opn coverage/lcov-report/index.html",
     "dev": "NODE_ENV=development nodemon ./lib/index.js",
     "webpack": "webpack",
-    "heroku-postbuild": "npm run webpack"
+    "heroku-postbuild": "npm run webpack && npm run sequelize -- db:migrate"
   },
   "keywords": [],
   "author": "",
