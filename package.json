@@ -27,7 +27,6 @@
     "connect-session-sequelize": "^4.1.0",
     "eslint": "^3.15.0",
     "istanbul-instrumenter-loader": "^2.0.0",
-    "jquery": "^3.2.1",
     "karma": "^1.7.0",
     "karma-chai": "^0.1.0",
     "karma-coverage": "^1.1.1",
@@ -44,6 +43,7 @@
     "webpack-dev-middleware": "^1.10.2"
   },
   "dependencies": {
+      "jquery": "^3.2.1",
       "bootstrap": "^3.3.7",
       "bootstrap-webpack": "0.0.6",
       "css-loader": "^0.28.4",
