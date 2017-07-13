@@ -1,7 +1,32 @@
 // setInterval
 
 var angular = require('angular');
-module.exports = angular.module('fswd.task', [])
+module.exports = angular.module('fswd.task', [require('angular-route')])
+    .config(function($routeProvider) {
+        $routeProvider.when('/tasks', {
+            templateUrl: '/partials/tasks'
+        });
+        $routeProvider.when('/tasks/:id', {
+            templateUrl: '/partials/task',
+            controller: function(task) {
+                var self = this;
+                self.task = task;
+            },
+            controllerAs: '$ctrl',
+            resolve: {
+                task: function($route, TaskListService) {
+                    return TaskListService.getTask($route.current.params.id)
+                }
+            }
+        })
+        $routeProvider.otherwise('/tasks');
+    })
+    .run(function($rootScope, $location) {
+        $rootScope.$on('$routeChangeError', function(event) {
+            // alert('PROBLEM CHANGE ROUTES');
+            $location.path('/tasks');
+        });
+    })
     .controller('AddTaskController', function(TaskListService) {
         var $ctrl = this;
 
@@ -44,6 +69,13 @@ module.exports = angular.module('fswd.task', [])
                     tasks = tasks.concat([response.data]);
                 });
         };
+
+        this.getTask = function(taskId) {
+            return $http.get('/tasks/' + taskId)
+                .then(function(response) {
+                    return response.data;
+                });
+        }
     })
     .controller('TasksController', function(TaskListService, $scope) {
         var self = this;

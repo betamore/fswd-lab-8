@@ -40,5 +40,25 @@ describe.only('fswd.task', function() {
                 });
             });
         });
+
+        describe('TasksController', function() {
+            it('should be create-able', inject(function($controller, $rootScope) {
+                $controller('TasksController as $ctrl', {
+                    $scope: $rootScope.$new()
+                }).should.be.ok;
+            }));
+
+            it('should run start the task poller', inject(function($controller, $rootScope) {
+                var startTaskPollerSpy = sinon.spy();
+                $controller('TasksController as $ctrl', {
+                    $scope: $rootScope.$new(),
+                    TaskListService: {
+                        startTaskPoller: startTaskPollerSpy
+                    }
+                });
+
+                startTaskPollerSpy.calledOnce.should.be.true;
+            }));
+        })
     });
 });

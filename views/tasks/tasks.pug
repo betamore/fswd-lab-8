@@ -1,14 +1,6 @@
 extends ../layout.pug
 block body
-  h1 Tasks!
-
-  h3 Angular Stuff
-  div(ng-controller="TasksController as $tasks")
-    ul
-      li(ng-repeat="task in $tasks.tasks track by task.id"
-         ng-class='{ "bg-danger": task.completedAt }') {{ task.name }} #[span(ng-if="task.completedAt") (is completed)] #[button.btn.btn-default(ng-if="!task.completedAt" ng-click="$tasks.completeTask(task.id)") (Do a thing to complete it)]
+  div(ng-view)
 
   .well(ng-controller="TasksController as $taskCounter")
     p There are {{ $taskCounter.tasks.length }} tasks.
-
-  add-task-component
