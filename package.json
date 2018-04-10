@@ -19,7 +19,7 @@
   "license": "ISC",
   "devDependencies": {
     "angular-mocks": "^1.6.4",
-    "bootstrap": "^3.3.7",
+    "bootstrap": "^4.1.0",
     "bootstrap-webpack": "0.0.6",
     "browser-sync": "^2.18.12",
     "browser-sync-webpack-plugin": "^1.1.4",
