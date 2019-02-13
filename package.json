@@ -59,7 +59,7 @@
     "body-parser": "^1.17.2",
     "connect-flash": "^0.1.1",
     "connect-redis": "^3.3.0",
-    "cookie-parser": "^1.4.3",
+    "cookie-parser": "1.4.3",
     "express": "^4.13.4",
     "express-messages": "^1.0.1",
     "express-session": "^1.15.3",
